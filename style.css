@@ -1,0 +1,21 @@
+body{
+	font-family: "Helvetica", sans-serif;
+}
+
+h1{
+	font-family: "Helvetica", cursive;
+	text-align: center;
+}
+.xlabel{
+	font-family: "Helvetica", cursive;
+}
+.ylabel{
+	font-family: "Helvetica", cursive;
+}
+
+#WC{
+	margin-left:50px;
+	margin-right:50px;
+	margin-top:10px;
+	margin-bottom:10px;
+}
