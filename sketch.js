@@ -91,6 +91,8 @@ var Astddev = 11.0594
 	var gradeyAxis = d3.axisLeft(wgrade_yscale)
 	var agradeyAxis = d3.axisLeft(agrade_yscale)
 
+	var wdevAxis = d3.axisRight(wgrade_yscale)
+	var adevAxis = d3.axisRight(agrade_yscale)
 
 
 	var div = d3.select("#fancy-chart").append("div")	
@@ -155,6 +157,10 @@ svg.select("text.ylabel").transition().duration(2000)
 svg.select("g.grade_axis").transition().duration(2000)
 	.style("opacity",0)
 	.remove()
+svg.select("g.stddev_axis").transition().duration(2000)
+	.style("opacity",0)
+	.remove()
+
 svg.select("text.grade_label").transition().duration(2000)
 	.style("opacity",0)
 	.remove()
@@ -210,6 +216,24 @@ svg.select("text.grade_label").transition().duration(2000)
 		.style("font-size", "26px")
 		.style("fill", "#7FDBFF")
 		.text("Grade Score 0-3");
+
+	svg.append("g")
+		.attr("class", "stddev_axis")
+		.attr("transform", "translate(1210,0)")
+		.style("stroke", "#ffffff")
+		.call(wdevAxis);
+/*
+	svg.append("text")
+		.attr("class", "stddev_label")
+		.attr("transform", "rotate(90)")
+		.attr("x",470)
+		.attr("y",-1210)
+		.style("text-anchor","end")
+		.style("font-weight","regular")
+		.style("font-size", "16px")
+		.style("fill", "#ffffff")
+		.text("Mean and standard deviations of Sentiment Score");
+*/
 
 //chart well group
 
@@ -423,6 +447,9 @@ svg.select("g.grade_axis").transition().duration(2000)
 svg.select("text.grade_label").transition().duration(2000)
 	.style("opacity",0)
 	.remove()
+svg.select("g.stddev_axis").transition().duration(2000)
+	.style("opacity",0)
+	.remove()
 //axes asthma group
 
 
@@ -474,6 +501,32 @@ svg.select("text.grade_label").transition().duration(2000)
 		.style("font-size", "26px")
 		.style("fill", "#0074D9")
 		.text("Grade Score 0-3");
+
+	svg.append("g")
+		.attr("class", "stddev_axis")
+		.attr("transform", "translate(1210,0)")
+		.style("stroke", "#ffffff")
+		.call(adevAxis);
+/*
+	svg.append("text")
+		.attr("class", "stddev_label")
+		.attr("transform", "rotate(90)")
+		.attr("x",470)
+		.attr("y",-1210)
+		.style("text-anchor","end")
+		.style("font-weight","regular")
+		.style("font-size", "16px")
+		.style("fill", "#ffffff")
+		.text("Mean and standard deviations of Sentiment Score");
+*/
+
+//chart well group
+
+wellgroup.selectAll("g")
+	.data(W)
+	.enter().append("g")
+		.attr("class", function(d,i){return "wellvisitor"+i;})
+	.append("circle")
 
 //chart asthma group
 
