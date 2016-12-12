@@ -8,6 +8,12 @@ var a = fs.readFileSync('data/Asthma.txt', "utf-8").split('\n')
 var w = fs.readFileSync('data/Well_Visit.txt', "utf-8").split('\n')
 
 var commentHa = ["usp_as_comment_rec_clinic",
+"usp_as_comment_clinicvisit",
+"usp_as_comment_ca",
+"usp_as_comment_pca1",
+"usp_as_comment_pca2",
+"usp_as_comment_pca_overall",
+"usp_as_comment_rec_clinic",
 "usp_as_comment_overall",
 "usp_as_comment_ec",
 "usp_as_comment_comm",
@@ -19,9 +25,14 @@ var commentHa = ["usp_as_comment_rec_clinic",
 "usp_as_comment_pa"]
 
 var commentHw = [
+"usp_wv_comment_clinicvisit",
 "usp_wv_comment_rec_clinic",
+"usp_wv_comment_pca1",
+"usp_wv_comment_pca2",
+"usp_wv_comment_pca_overall",
 "usp_wv_comment_overall",
 "usp_wv_comment_ec",
+"usp_wv_comment_ca",
 "usp_wv_comment_comm",
 "usp_wv_comment_assess",
 "usp_wv_comment_pe",
@@ -120,6 +131,7 @@ for(var i=0;i<A.length;i++){
 }
 
 
+/*
 var temp;
 for(var i=0;i<W.length;i++){
 	temp = "";
@@ -127,8 +139,9 @@ for(var i=0;i<W.length;i++){
 		temp += W[i][j] 
 		temp += "\t";
 	}
-		//console.log(temp)
+		console.log(temp)
 }
+*/
 var temp;
 for(var i=0;i<A.length;i++){
 	temp = "";

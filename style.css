@@ -4,6 +4,7 @@ body{
 
 h1{
 	font-family: "Helvetica", cursive;
+	color: black;
 	text-align: center;
 }
 .xlabel{
@@ -13,9 +14,54 @@ h1{
 	font-family: "Helvetica", cursive;
 }
 
-#WC{
+.grade_label{
+	font-family: "Helvetica", cursive;
+	color: "#7FDBFF";
+
+}
+
+#sentiment{
 	margin-left:50px;
 	margin-right:50px;
-	margin-top:10px;
-	margin-bottom:10px;
+	margin-top:5px;
+	margin-bottom:5px;
+}
+#WC{
+	float:right;
+	margin-left:50px;
+	margin-right:50px;
+	margin-top:5px;
+	margin-bottom:5px;
+}
+#asth{
+	font-family: "Helvetica", sans-serif;	
+	padding-left:20px;
+	display:inline-block;
+
+}
+
+#well{
+	display:inline-block;
+	font-family: "Helvetica", sans-serif;	
+	padding-left:20px;
+
+}
+
+#removeP{
+	font-family: "Helvetica", sans-serif;	
+	padding-left:40px;
+	display:inline-block;
+
+}
+
+#removeN{
+	display:inline-block;
+	font-family: "Helvetica", sans-serif;	
+	padding-left:40px;
+
+}
+
+#menuD{
+	font-family: "Helvetica", sans-serif;	
+	padding-left:20px;
 }
