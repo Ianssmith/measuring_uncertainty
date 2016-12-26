@@ -107,7 +107,8 @@ var Astddev = 11.0594
 		.append("svg")
 		.attr("width", w+margin.right+margin.left)
 		.attr("height", h)
-		.style("background", "#FF4136")//"#FF4136")
+		.style("background", "white")//"#FF4136")
+		//.style("background", "#FF4136")//"#FF4136")
 		.style("padding", margin.left+"px")
 		.style("margin", margin.left+"px")
 		.style("margin-bottom", "0px")
@@ -129,7 +130,16 @@ var Astddev = 11.0594
 var wellgroup = svg.append("g").attr("transform", "translate(70,0)")//"translate("+margin.left+","+margin.top+")");
 var asthgroup = svg.append("g").attr("transform", "translate(70,0)")//"translate("+margin.left+","+margin.top+")");
 
-d3.select(".well").on("click",function(){
+var well = d3.select("#well")
+var asth =  d3.select("#asth")
+
+//well.on("mouseover",function(){well.style("background", "#999999");})
+//well.on("mouseout",function(){well.style("background", "#ffffff");})
+
+//asth.on("mouseover",function(){asth.style("background", "#999999");})
+//asth.on("mouseout",function(){asth.style("background", "#ffffff");})
+
+d3.select("#well").on("click",function(){
 
 //remove previous graph
 
@@ -197,7 +207,8 @@ svg.select("text.grade_label").transition().duration(2000)
 		.style("text-anchor","end")
 		.style("font-weight","bold")
 		.style("font-size", "26px")
-		.style("fill", "white")
+		.style("fill", "#FF4136")
+		//.style("fill", "white")
 		.text("Sentiment Score");
 
 	svg.append("g")
@@ -214,7 +225,8 @@ svg.select("text.grade_label").transition().duration(2000)
 		.style("text-anchor","end")
 		.style("font-weight","bold")
 		.style("font-size", "26px")
-		.style("fill", "#7FDBFF")
+		.style("fill", "#2ECC40")
+		//.style("fill", "#7FDBFF")
 		.text("Grade Score 0-3");
 
 	svg.append("g")
@@ -255,7 +267,8 @@ wellgroup.selectAll("g")
 		.attr("cy", function(d,i){return w_yscale(+d.Sentiment_score)})
 		.attr("r", 4)
 		.style("opacity",.75)
-		.attr("fill", "#ffffff");
+		.attr("fill", "#FF4136");
+		//.attr("fill", "#ffffff");
 
 	wellgroup.selectAll("ellipse")
 		.data(W)
@@ -282,7 +295,7 @@ wellgroup.selectAll("g")
 		.attr("rx", 4)
 		.attr("ry", 4)
 		.style("opacity",.6)
-		.attr("fill", "#7FDBFF");
+		.attr("fill", "#2ECC40");
 
 	wellgroup.selectAll("line")
 		.data(W)
@@ -304,7 +317,8 @@ wellgroup.selectAll("g")
 		.transition()
 		.delay(function(d,i){return i*8;})
 		.duration(3000)
-		.style("stroke", function(d,i){if(w_yscale(+d.Sentiment_score) > wgrade_yscale(+d.usp_wv_global_clinic)){return "black"}else{return "FFDC00"}})
+		.style("stroke", function(d,i){if(w_yscale(+d.Sentiment_score) > wgrade_yscale(+d.usp_wv_global_clinic)){return "#2ECC40"}else{return "#FF4136"}})
+		//.style("stroke", function(d,i){if(w_yscale(+d.Sentiment_score) > wgrade_yscale(+d.usp_wv_global_clinic)){return "black"}else{return "FFDC00"}})
 		.style("stroke-width", "0.75px")
 		//.attr("x1", function(d,i){return w_xscale(+d.usp_wv_visit_length)})//participant_id)})
 		.attr("x1",function(d,i){return id_w_xscale(i)})
@@ -329,10 +343,11 @@ wellgroup.selectAll("g")
 				.style("border-radius","3px")
 				.style("padding","2px")
 				.style("color", "black")
-				.style("opacity", 0.9);
-			div.html(d.wc + " words <br>- " + d.usp_wv_global_clinic + " out of 3<br>Sentiment Score: "+d.Sentiment_score)
-				.style("left", (d3.event.pageX) -60+ "px")
-				.style("top", (d3.event.pageY) -90+ "px");
+				.style("opacity", 0.8);
+			//div.html("Comments:<br>"+ d.comment_corp)
+			div.html(d.wc + " words <br> " + d.usp_wv_global_clinic + " out of 3<br>Sentiment Score: "+d.Sentiment_score)
+				.style("left", (d3.event.pageX) +30+ "px")
+				.style("top", (d3.event.pageY) +30+ "px");
 
 		})	
 		svg.selectAll("ellipse").on("mouseout", function(){
@@ -344,7 +359,8 @@ wellgroup.selectAll("g")
 			//.attr("cy", function(d){return w_yscale(+d.Sentiment_score)})
 			.attr("rx", 4)
 			.attr("ry", 4)
-			.attr("fill", "#7FDBFF")
+			.attr("fill", "#2ECC40")
+			//.attr("fill", "#7FDBFF")
 		div.transition()
 			.style("opacity",0)
 
@@ -364,9 +380,12 @@ wellgroup.selectAll("g")
 				.style("padding","2px")
 				.style("color", "black")
 				.style("opacity", 0.9);
-			div.html(d.wc + " words <br>- " + d.usp_wv_global_clinic + " out of 3<br>Sentiment Score: "+d.Sentiment_score)
-				.style("left", (d3.event.pageX) -60+ "px")
-				.style("top", (d3.event.pageY) -90+ "px");
+			div.html("Comments:<br>"+ d.comment_corp)
+			//div.html(d.wc + " words <br> " + d.usp_wv_global_clinic + " out of 3<br>Sentiment Score: "+d.Sentiment_score)
+				.style("left", (d3.event.pageX) +30+ "px")
+				.style("top", (d3.event.pageY) +30+ "px");
+				//.style("left", (d3.event.pageX) -60+ "px")
+				//.style("top", (d3.event.pageY) -90+ "px");
 			/*
 			pidiv.transition()
 				.style("color", "white")
@@ -386,7 +405,7 @@ wellgroup.selectAll("g")
 			//.attr("cx", function(d,i){return a_xscale(+d.usp_as_visit_length)})//participant_id)})
 			//.attr("cy", function(d){return a_yscale(+d.Sentiment_score)})
 			.attr("r", 4)
-			.attr("fill", "white")
+			.attr("fill", "#FF4136")
 		div.transition()
 			.style("opacity",0)
 		});
@@ -482,7 +501,7 @@ svg.select("g.stddev_axis").transition().duration(2000)
 		.style("text-anchor","end")
 		.style("font-weight","bold")
 		.style("font-size", "26px")
-		.style("fill", "#01FF70")
+		.style("fill", "#FF4136")
 		.text("Sentiment Score");
 
 	svg.append("g")
@@ -499,7 +518,7 @@ svg.select("g.stddev_axis").transition().duration(2000)
 		.style("text-anchor","end")
 		.style("font-weight","bold")
 		.style("font-size", "26px")
-		.style("fill", "#0074D9")
+		.style("fill", "#2ECC40")
 		.text("Grade Score 0-3");
 
 	svg.append("g")
@@ -552,7 +571,7 @@ asthgroup.selectAll("g")
 		.attr("cy", function(d,i){return a_yscale(+d.Sentiment_score)})
 		.attr("r", 4)
 		.style("opacity",.6)
-		.attr("fill", "#01FF70");
+		.attr("fill", "#FF4136");
 
 asthgroup.selectAll("ellipse")
 		.data(A)
@@ -579,7 +598,7 @@ asthgroup.selectAll("ellipse")
 		.attr("rx", 4)
 		.attr("ry", 4)
 		.style("opacity",.75)
-		.attr("fill", "#0074D9");
+		.attr("fill", "#2ECC40");
 
 asthgroup.selectAll("line")
 		.data(A)
@@ -601,7 +620,8 @@ asthgroup.selectAll("line")
 		.transition()
 		.delay(function(d,i){return i*8;})
 		.duration(3000)
-		.style("stroke",function(d,i){if(a_yscale(+d.Sentiment_score) > agrade_yscale(+d.usp_as_global_clinic)){return "black"}else{return "#FFDC00"}})
+		.style("stroke",function(d,i){if(a_yscale(+d.Sentiment_score) > agrade_yscale(+d.usp_as_global_clinic)){return "#2ECC40"}else{return "#FF4136"}})
+		//.style("stroke",function(d,i){if(a_yscale(+d.Sentiment_score) > agrade_yscale(+d.usp_as_global_clinic)){return "black"}else{return "#FFDC00"}})
 		.style("stroke-width", "0.75px")
 		//.attr("x1", function(d,i){return w_xscale(+d.usp_wv_visit_length)})//participant_id)})
 		.attr("x1",function(d,i){return id_a_xscale(i)})
@@ -626,9 +646,11 @@ asthgroup.selectAll("line")
 				.style("padding","2px")
 				.style("color", "black")
 				.style("opacity", 0.9);
-			div.html(d.wc + " words <br>- " + d.usp_as_global_clinic + " out of 3<br>Sentiment Score: "+d.Sentiment_score)
-				.style("left", (d3.event.pageX) -60+ "px")
-				.style("top", (d3.event.pageY) -90+ "px");
+			div.html(d.wc + " words <br> " + d.usp_as_global_clinic + " out of 3<br>Sentiment Score: "+d.Sentiment_score)
+				.style("left", (d3.event.pageX) +30+ "px")
+				.style("top", (d3.event.pageY) +30+ "px");
+				//.style("left", (d3.event.pageX) -60+ "px")
+				//.style("top", (d3.event.pageY) -90+ "px");
 
 		})	
 		svg.selectAll("ellipse").on("mouseout", function(){
@@ -640,7 +662,7 @@ asthgroup.selectAll("line")
 			//.attr("cy", function(d){return w_yscale(+d.Sentiment_score)})
 			.attr("rx", 4)
 			.attr("ry", 4)
-			.attr("fill", "#0074D9")
+			.attr("fill", "#2ECC40")
 		div.transition()
 			.style("opacity",0)
 		});
@@ -659,9 +681,12 @@ asthgroup.selectAll("line")
 				.style("padding","2px")
 				.style("color", "black")
 				.style("opacity", 0.9);
-			div.html(d.wc + " words <br>- " + d.usp_as_global_clinic + " out of 3<br>Sentiment Score: "+d.Sentiment_score)
-				.style("left", (d3.event.pageX) -60+ "px")
-				.style("top", (d3.event.pageY) -90+ "px");
+			div.html("Comments:<br>"+ d.comment_corp)
+			//div.html(d.wc + " words <br> " + d.usp_as_global_clinic + " out of 3<br>Sentiment Score: "+d.Sentiment_score)
+				.style("left", (d3.event.pageX) +30+ "px")
+				.style("top", (d3.event.pageY) +30+ "px");
+				//.style("left", (d3.event.pageX) -60+ "px")
+				//.style("top", (d3.event.pageY) -90+ "px");
 
 		})	
 
@@ -673,7 +698,7 @@ asthgroup.selectAll("line")
 			//.attr("cx", function(d,i){return a_xscale(+d.usp_as_visit_length)})//participant_id)})
 			//.attr("cy", function(d){return a_yscale(+d.Sentiment_score)})
 			.attr("r", 4)
-			.attr("fill", "#01FF70") /////*****green
+			.attr("fill", "#FF4136") /////*****green
 		div.transition()
 			.style("opacity",0)
 		});
