@@ -191,7 +191,7 @@ svg.select("text.grade_label").transition().duration(2000)
 		.style("text-anchor","middle")
 		.style("font-weight","bold")
 		.style("font-size", "26px")
-		.text("Visits");
+		.text("Visit ID");
 
 	svg.append("g")
 		.attr("class", "y_axis")
