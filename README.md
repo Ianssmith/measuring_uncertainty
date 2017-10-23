@@ -1,7 +1,6 @@
 ## This project visualized the disparity between number ratings reported by people from 0-4 vs. the sentiment score calculated by a common sentiment analysis algorithm (AFINN) run on the same people written comments.
 
-![alt text](measuring_uncertainty.png "Simple map showing location of upcoming meetings")[1]
-[1]:ianssmith.github.io/measuring_uncertainty
+![alt text](measuring_uncertainty.png "Simple map showing location of upcoming meetings")(ianssmith.github.io/measuring_uncertainty)
 
 
 ### Contents:
