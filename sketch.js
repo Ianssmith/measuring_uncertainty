@@ -98,7 +98,7 @@ var Astddev = 11.0594
 	var div = d3.select("#fancy-chart").append("div")	
 		.style("position","absolute")
 		.attr("class", "tooltip")				
-		.style("opacity", 0);
+		.style("opacity", "0");
 
 	d3.select("body")
 		.style("background-color", "#ffffff")
@@ -107,7 +107,8 @@ var Astddev = 11.0594
 		.append("svg")
 		.attr("width", w+margin.right+margin.left)
 		.attr("height", h)
-		.style("background", "white")//"#FF4136")
+		//.style("background", "white")//"#FF4136")
+		.style("background", "transparent")//"#FF4136")
 		//.style("background", "#FF4136")//"#FF4136")
 		.style("padding", margin.left+"px")
 		.style("margin", margin.left+"px")
@@ -345,9 +346,10 @@ wellgroup.selectAll("g")
 				.style("color", "black")
 				.style("opacity", 0.8);
 			//div.html("Comments:<br>"+ d.comment_corp)
-			div.html(d.wc + " words <br> " + d.usp_wv_global_clinic + " out of 3<br>Sentiment Score: "+d.Sentiment_score)
+			div.html(d.wc + " words <br> " + d.usp_wv_global_clinic + " out of 3<br>Sentiment Score: "+d.Sentiment_score.replace("undefined",""))
+				//.style("z-index","10")
 				.style("left", (d3.event.pageX) +30+ "px")
-				.style("top", (d3.event.pageY) +30+ "px");
+				.style("top", (d3.event.pageY) +30+ "px")
 
 		})	
 		svg.selectAll("ellipse").on("mouseout", function(){
@@ -380,7 +382,7 @@ wellgroup.selectAll("g")
 				.style("padding","2px")
 				.style("color", "black")
 				.style("opacity", 0.9);
-			div.html("Comments:<br>"+ d.comment_corp)
+			div.html("Comments:<br>"+ d.comment_corp.replace("undefined",""))
 			//div.html(d.wc + " words <br> " + d.usp_wv_global_clinic + " out of 3<br>Sentiment Score: "+d.Sentiment_score)
 				.style("left", (d3.event.pageX) +30+ "px")
 				.style("top", (d3.event.pageY) +30+ "px");
@@ -646,7 +648,7 @@ asthgroup.selectAll("line")
 				.style("padding","2px")
 				.style("color", "black")
 				.style("opacity", 0.9);
-			div.html(d.wc + " words <br> " + d.usp_as_global_clinic + " out of 3<br>Sentiment Score: "+d.Sentiment_score)
+			div.html(d.wc + " words <br> " + d.usp_as_global_clinic + " out of 3<br>Sentiment Score: "+d.Sentiment_score.replace("undefined",""))
 				.style("left", (d3.event.pageX) +30+ "px")
 				.style("top", (d3.event.pageY) +30+ "px");
 				//.style("left", (d3.event.pageX) -60+ "px")
@@ -681,7 +683,7 @@ asthgroup.selectAll("line")
 				.style("padding","2px")
 				.style("color", "black")
 				.style("opacity", 0.9);
-			div.html("Comments:<br>"+ d.comment_corp)
+			div.html("Comments:<br>"+ d.comment_corp.replace("undefined",""))
 			//div.html(d.wc + " words <br> " + d.usp_as_global_clinic + " out of 3<br>Sentiment Score: "+d.Sentiment_score)
 				.style("left", (d3.event.pageX) +30+ "px")
 				.style("top", (d3.event.pageY) +30+ "px");
